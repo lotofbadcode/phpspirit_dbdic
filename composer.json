@@ -1,0 +1,24 @@
+{
+    "name": "lotofbadcode/phpspirit_dbdic",
+    "description": "读取数据库生成数据字典",
+    "license": "Apache-2.0",
+    "type": "library",
+    "keywords": [
+        "php",
+        "library"
+    ],
+    "authors": [
+        {
+            "name": "代码庸医",
+            "email": "3359964266@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "phpspirit\\dbdic\\": "src/"
+        }
+    }
+}
