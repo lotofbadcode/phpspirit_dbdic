@@ -2,6 +2,8 @@
 
 namespace phpspirit\dbdic;
 
+use PDO;
+
 class Mysql
 {
     private $_pdo;
@@ -13,10 +15,12 @@ class Mysql
     /**
      * 获取所有表
      */
-    public function tables()
+    public function tables($dbname)
     {
-        $tables=[];
-        $this->_pdo->exec('show tables');
+        $sql = "select * from information_schema.`TABLES` where TABLE_SCHEMA ='" . $dbname . "'";
+        $stmt = $this->_pdo->prepare($sql);
+        $stmt->execute();
+        return  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -24,5 +28,9 @@ class Mysql
      */
     public  function cloums($tablename)
     {
+        $sql = "select * from information_schema.COLUMNS where table_name ='" . $tablename . "'";
+        $stmt = $this->_pdo->prepare($sql);
+        $stmt->execute();
+        return  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
